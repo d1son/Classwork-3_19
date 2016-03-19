@@ -28,8 +28,16 @@ app.get('/orders', function(req, res){
 
 app.post('/neworder', function(req, res){
 //create a new order
-
-
+	var newOrder = new Order(req.body);
+	newOrder.save(function(err, doc) {
+		if (err){
+			console.log(err);
+			res.send(err);
+		} else {
+			console.log(doc);
+			res.send(doc);
+		}
+	});
 });
 
 

@@ -19,7 +19,11 @@ angular.module('orderApp', [])
           url:'/neworder',
           data: newOrder
         }).then(function (result){
-
+          orderList.orders.push(result.data);
+          orderList.address = '';
+          orderList.notes = '';
+          orderList.itemBoxes = [];
+          orderList.itemBoxCounter = [];
           //push the result to the orderList.orders array
           //clear the form and reset the itemBoxCounter
         });
