@@ -21,8 +21,15 @@ app.get('/', function(req, res) {
 
 
 app.get('/orders', function(req, res){
-//find all orders
-
+//find all orders, set up the route to interact with the database
+	Order.find(function(err, docs) {
+		if (err) {
+			console.log(err);
+			res.send(err);
+		} else {
+			res.send(docs);
+		}
+	})
 
 });
 

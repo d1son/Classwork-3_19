@@ -33,20 +33,23 @@ angular.module('orderApp', [])
         $http({
           method: 'GET',
           url: '/orders'
-        }).then (function (result){
+        }).then (function (results){
+          console.log("we got orders back from the server")
+          console.log(results);
           //loop over the results and push them to the orderList.orders array
-
-
+          angular.forEach(results.data, function(order) {
+            orderList.orders.push(order);
           });
-        };
+        });
+      };
 
-        orderList.addItemBox = function(){
-          orderList.itemBoxes.push({
-            name:"item" + orderList.itemBoxCounter,
-            placeholder: "Item #" +orderList.itemBoxCounter
-          });
-          orderList.itemBoxCounter++;
-        };
+      orderList.addItemBox = function(){
+        orderList.itemBoxes.push({
+          name:"item" + orderList.itemBoxCounter,
+          placeholder: "Item #" +orderList.itemBoxCounter
+        });
+        orderList.itemBoxCounter++;
+      };
 
 
       orderList.getOrders();
