@@ -10,8 +10,8 @@ angular.module('orderApp', [])
 
           //Grab the recipe form data and complete this object to be submitted to the server
           //hint: check out the recipeList object
-          address: String,
-          notes: String,
+          address: orderList.address, //look for this in the HTML form
+          notes: orderList.notes,
           items: orderList.itemBoxes
         };
         $http({
